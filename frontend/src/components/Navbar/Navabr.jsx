@@ -3,7 +3,7 @@ import { navItems } from "../../static/data";
 import { Link } from "react-router-dom";
 
 export default function Navabr({ active }) {
-  return <div className="flex items-center px-3">
+  return <div className="flex items-center px-3 md:gap-3">
     {
         navItems && navItems.map((item,index)=>(
             <div className="flex" key={index}>

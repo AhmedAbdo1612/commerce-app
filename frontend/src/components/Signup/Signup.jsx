@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-import { Link} from "react-router-dom";
+import React, { useState, } from "react";
+import {PulseLoader}  from "react-spinners";
+import { Link } from "react-router-dom";
 import { RxAvatar } from "react-icons/rx";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "../../App.css";
 import { server } from "../../server";
-import axios from 'axios'
+import axios from "axios";
 import { toast } from "react-toastify";
+
 export default function Signup() {
+  
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -15,19 +19,30 @@ export default function Signup() {
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
   async function handleSubmit(event) {
+    setLoading(true);
+    setTimeout(()=>{}, 5000)
+  
     event.preventDefault();
     try {
-      const config = {headers:{
-        "Content-Type":"multipart/form-data"
-      }}
-  
-      const res = await axios.post(`${server}/user/signup`,{...formData,"file":avatar},config)
-      const data = res.data
-   toast.success(data.message)
-   setFormData({email: "",password: "",name: "", })
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const res = await axios.post(
+        `${server}/user/signup`,
+        { ...formData, file: avatar },
+        config
+      );
+      const data = res.data;
+      setTimeout(()=>{setLoading(false)},3000)
+      toast.success(data.message);
+      setFormData({ email: "", password: "", name: "" });
     } catch (error) {
-      toast.error(error.response.data.message)
-      console.log(error)
+      setTimeout(()=>{setLoading(false)},2500)
+      toast.error(error.response.data.message);
+      console.log(error);
     }
   }
   function handleFileUpload(e) {
@@ -160,15 +175,21 @@ export default function Signup() {
               </div>
             </div>
 
-            <div className="">
-              <button
-                type="submit"
-                className="group relative  w-full py-4
+            <div className="flex justify-center">
+              <div className="sweet-loading"></div>
+              {loading ? (
+               <PulseLoader color="#36d7b7" />
+              ) : (
+                <button
+                  
+                  type="submit"
+                  className="group relative  w-full py-4
                  flex justify-center border-transparent font-bold
                   rounded-lg  text-white bg-blue-600 hover:bg-blue-700"
-              >
-                Sign Up
-              </button>
+                >
+                  Sign Up
+                </button>
+              )}
             </div>
             <div className="flex items-center justify-center">
               <h3>Already have account?</h3>

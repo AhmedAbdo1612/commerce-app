@@ -23,11 +23,11 @@ export default function CountDown() {
 
     return timeLeft;
   }
-    const timerComponents = Object.keys(timeLeft).map((interval)=>{
+    const timerComponents = Object.keys(timeLeft).map((interval,index)=>{
         if(!timeLeft[interval]){
             return null
         }
-        return (<span className='text-[25px] text-blue-700'>
+        return (<span className='text-[25px] text-blue-700' key={index}>
         {timeLeft[interval]} {interval} {" "}
        </span> )})
   return (

@@ -1,15 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { AiOutlineSearch,AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
-import {CgProfile} from 'react-icons/cg'
+import {
+  AiOutlineSearch,
+  AiOutlineHeart,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
+import { backend_url } from "../../server";
+import { CgProfile } from "react-icons/cg";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { categoriesData, productData } from "../../static/data";
 import DropDown from "../DropDown/DropDown";
 import Navabr from "../Navbar/Navabr";
+import { useSelector } from "react-redux";
 
 export default function Header({ activeHeading }) {
+  let user = useSelector((state) => state.user.user.currentUser);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState([]);
   const [active, setActive] = useState(false);
@@ -39,7 +47,7 @@ export default function Header({ activeHeading }) {
             <Link to={"/"}>
               <img
                 className="w-20 h-15 rounded-md object-cover "
-                src="https://www.shutterstock.com/shutterstock/photos/1540000625/display_1500/stock-vector-letter-e-online-shop-logo-vector-1540000625.jpg"
+                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
                 alt=""
               />
             </Link>
@@ -96,7 +104,8 @@ export default function Header({ activeHeading }) {
           <div className="">
             <div className="relative h-[60px] mt-[10px] w-[270px] hidden 1000px:block  1000px: ml-10">
               <BiMenuAltLeft size={30} className="absolute top-3 left-2" />
-              <button onClick={()=>setDropdown(!dropdown)}
+              <button
+                onClick={() => setDropdown(!dropdown)}
                 className={`h-[100%] w-full flex justify-between items-center pl-10
             bg-white font-sans text-lg font-[500] select-none rounded-t-md`}
               >
@@ -124,30 +133,42 @@ export default function Header({ activeHeading }) {
         <div className=" flex">
           <div className="flex items-center">
             <div className="relative cursor-pointer mr-[15px]">
-              <AiOutlineHeart size={30} 
-              color="rgb(255 255 255 / 83%)"/>
-              <span className="absolute right-0 top-0 rounded-full
+              <AiOutlineHeart size={30} color="rgb(255 255 255 / 83%)" />
+              <span
+                className="absolute right-0 top-0 rounded-full
                bg-black w-4 h-4 top right 
-               p-0 m-0 text-white font-normal text-[12px] leading-tight text-center ">0</span>
+               p-0 m-0 text-white font-normal text-[12px] leading-tight text-center "
+              >
+                0
+              </span>
             </div>
           </div>
 
           <div className="flex items-center">
             <div className="relative cursor-pointer mr-[15px]">
-              <AiOutlineShoppingCart size={30} 
-              color="rgb(255 255 255 / 83%)"/>
-              <span className="absolute right-0 top-0 rounded-full
+              <AiOutlineShoppingCart size={30} color="rgb(255 255 255 / 83%)" />
+              <span
+                className="absolute right-0 top-0 rounded-full
                bg-black w-4 h-4 top right 
-               p-0 m-0 text-white font-normal text-[12px] leading-tight text-center ">1</span>
+               p-0 m-0 text-white font-normal text-[12px] leading-tight text-center "
+              >
+                1
+              </span>
             </div>
           </div>
 
           <div className="flex items-center">
             <div className="relative cursor-pointer mr-[15px]">
-             <Link to={'/signin'}>
-             <CgProfile size={30} color="rgb(255 255 255 / 83%)"/>
-             </Link>
-              
+              {user ? (
+                <Link to={"/profile"}>
+                <img src= {backend_url+"/" +user.user.avatar.url} alt="" 
+                className="rounded-full w-[40px] h-[40px] object-cover"/>
+                </Link>
+              ) : (
+                <Link to={"/signin"}>
+                  <CgProfile size={30} color="rgb(255 255 255 / 83%)" />
+                </Link>
+              )}
             </div>
           </div>
         </div>

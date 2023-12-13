@@ -6,6 +6,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from './pages/Home';
+import ProductsPage from './pages/ProductsPage';
+import BestSellingPage from './pages/BestSellingPage';
+import EventsPage from './pages/EventsPage';
+import FAQPage from './pages/FAQPage';
 export default function App() {
 
   return (
@@ -15,6 +19,10 @@ export default function App() {
         <Route path='/signin' element={<LoginPage />} />
         <Route path='/sign-up' element={<SignupPage />} />
         <Route path='/activation/:activation_token' element={<ActivationPage />} />
+        <Route path='/products' element = {<ProductsPage/>}></Route>
+        <Route path='/best-selling' element = {<BestSellingPage/>}></Route>
+        <Route path='/events' element = {<EventsPage/>}></Route>
+        <Route path='/faq' element = {<FAQPage/>}></Route>
       </Routes>
       <ToastContainer
         position="top-center"

@@ -1,9 +1,10 @@
 import React from "react";
 import CountDown from "../CountDown/CountDown";
 
-export default function EventCard() {
+export default function EventCard({active}) {
   return (
-    <div className={`w-full bg-white rounded-lg lg:flex p-2`}>
+    <div className={`w-full bg-white rounded-lg ${active?"unset":"mb-12"} lg:flex p-2
+    sm:w-[80%] sm:mx-auto`}>
       <div className="w-full lg:w-[50%] m-auto">
         <img src="https://m.media-amazon.com/images/I/31Vle5fVdaL.jpg" alt="" />
       </div>
