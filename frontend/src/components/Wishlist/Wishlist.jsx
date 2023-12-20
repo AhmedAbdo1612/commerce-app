@@ -1,0 +1,85 @@
+import React, { useState } from "react";
+import { RxCross1 } from "react-icons/rx";
+import { BsCartPlus } from "react-icons/bs";
+import { AiOutlineHeart } from "react-icons/ai";
+export default function Wishlist({ setOpenWishlist }) {
+  const cartData = [
+    {
+      name: "Iphone 14 pro max 256 gb ssd 8 gb ram silver color",
+      description: "test",
+      price: 999,
+    },
+    {
+      name: "Iphone 14 pro max 256 gb ssd 8 gb ram silver color",
+      description: "test",
+      price: 356,
+    },
+    {
+      name: "Iphone 14 pro max 256 gb ssd 8 gb ram silver color",
+      description: "test",
+      price: 722,
+    },
+  ];
+  return (
+    <div className="absolute top-0 left-0 w-full bg-black h-screen  z-10 bg-opacity-20 ">
+      <div
+        className=" absolute top-0 right-0 h-full w-full sm:w-[25%] 
+     bg-white flex flex-col justify-between shadow-md rounded-t-xl"
+      >
+        <div className="">
+          <div className="flex w-full justify-end pt-5 pr-5 ">
+            <RxCross1
+              size={25}
+              onClick={() => setOpenWishlist(false)}
+              className="cursor-pointer"
+            />
+          </div>
+          {/* items list  */}
+          <div className="flex items-center  p-4">
+            <AiOutlineHeart size={25} />
+            <h5 className="pl-2 text-xl font-[500]"> 3 items</h5>
+          </div>
+          {/* Wishlist */}
+          <br />
+          <div className="w-full border-t">
+            {cartData &&
+              cartData.map((item, index) => (
+                <CartSingle data={item} key={index} />
+              ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+const CartSingle = ({ data }) => {
+  const [value, setValue] = useState(1);
+  const totalPrice = value * data.price;
+
+  return (
+    <div className="border-b p-4 py-7">
+      <div className="w-full flex items-center">
+        <RxCross1 className="cursor-pointer"  size={20}/>
+        <img
+          src="https://st-troy.mncdn.com/mnresize/1500/1500/Content/media/ProductImg/original/mpwp3tua-apple-iphone-14-256gb-mavi-mpwp3tua-637986832343472449.jpg"
+          alt=""
+          className="w-[80px] h-[80px] ml-3"
+        />
+        <div className="pl-[5px]">
+          <h2 className="font-semibold">{data.name}</h2>
+
+          <h4 className="font-[600] text-[17px] pt-[3px] text-orange-700 font-Roboto">
+            US${totalPrice}
+          </h4>
+        </div>
+        <div>
+          <BsCartPlus
+            size={20}
+            className="cursor-pointer"
+            title="Add to cart"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};

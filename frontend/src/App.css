@@ -3,3 +3,6 @@
     background-size: 300% 300%;
     animation: color 12s ease-in-out infinite;
 }
+.header-transition{
+    transition: 300ms;
+}

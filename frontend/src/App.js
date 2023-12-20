@@ -10,6 +10,7 @@ import ProductsPage from './pages/ProductsPage';
 import BestSellingPage from './pages/BestSellingPage';
 import EventsPage from './pages/EventsPage';
 import FAQPage from './pages/FAQPage';
+import ProductDetailsPage from './pages/ProductDetailsPage';
 export default function App() {
 
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path='/sign-up' element={<SignupPage />} />
         <Route path='/activation/:activation_token' element={<ActivationPage />} />
         <Route path='/products' element = {<ProductsPage/>}></Route>
+        <Route path='/product/:name' element = {<ProductDetailsPage/>}></Route>
         <Route path='/best-selling' element = {<BestSellingPage/>}></Route>
         <Route path='/events' element = {<EventsPage/>}></Route>
         <Route path='/faq' element = {<FAQPage/>}></Route>

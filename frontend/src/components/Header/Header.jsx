@@ -14,6 +14,8 @@ import { categoriesData, productData } from "../../static/data";
 import DropDown from "../DropDown/DropDown";
 import Navabr from "../Navbar/Navabr";
 import { useSelector } from "react-redux";
+import Cart from "../Cart/Cart";
+import Wishlist from "../Wishlist/Wishlist";
 
 export default function Header({ activeHeading }) {
   let user = useSelector((state) => state.user.user.currentUser);
@@ -22,6 +24,8 @@ export default function Header({ activeHeading }) {
   const [searchData, setSearchData] = useState([]);
   const [active, setActive] = useState(false);
   const [dropdown, setDropdown] = useState(false);
+  const [openCart, setOpenCart] = useState(false)
+  const [openWishlist,setOpenWishlist] = useState(false)
   function handleSearchChange(e) {
     setSearchTerm(e.target.value);
     const filteredProducts =
@@ -96,8 +100,8 @@ export default function Header({ activeHeading }) {
         className={`${
           active === true ? "shadow-sm fixed top-0 left-0 z-10" : "mt-4"
         }
-     transition hidden 800px:flex items-center
-      justify-between w-full bg-blue-800 h-[70px] `}
+      hidden 800px:flex items-center duration-[900]
+      justify-between w-full bg-blue-800 h-[70px] header-transition`}
       >
         <div className="relative flex justify-between">
           {/* categories */}
@@ -133,7 +137,8 @@ export default function Header({ activeHeading }) {
         <div className=" flex">
           <div className="flex items-center">
             <div className="relative cursor-pointer mr-[15px]">
-              <AiOutlineHeart size={30} color="rgb(255 255 255 / 83%)" />
+              <AiOutlineHeart size={30} color="rgb(255 255 255 / 83%)" 
+              onClick={()=>setOpenWishlist(true)}/>
               <span
                 className="absolute right-0 top-0 rounded-full
                bg-black w-4 h-4 top right 
@@ -144,7 +149,7 @@ export default function Header({ activeHeading }) {
             </div>
           </div>
 
-          <div className="flex items-center">
+          <div className="flex items-center" onClick={()=>setOpenCart(true)}>
             <div className="relative cursor-pointer mr-[15px]">
               <AiOutlineShoppingCart size={30} color="rgb(255 255 255 / 83%)" />
               <span
@@ -171,6 +176,9 @@ export default function Header({ activeHeading }) {
               )}
             </div>
           </div>
+          {/* cart  popup */}
+          {openCart && <Cart setOpenCart = {setOpenCart}/>}
+          {openWishlist && <Wishlist setOpenWishlist = {setOpenWishlist}/>}
         </div>
       </div>
     </>
