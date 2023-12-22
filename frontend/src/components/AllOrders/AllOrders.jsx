@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/base/Button";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 
 export default function AllOrders() {
   const orders = [
