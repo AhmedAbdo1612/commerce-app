@@ -4,6 +4,7 @@ import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import ProductDetails from '../components/ProductDetails/ProductDetails'
 import { productData } from '../static/data'
+import SuggestedProducts from '../components/SuggestedProducts/SuggestedProducts'
 
 export default function ProductDetailsPage() {
     const {name} = useParams()
@@ -17,6 +18,9 @@ export default function ProductDetailsPage() {
     <div>
         <Header activeHeading={3}/>
         <ProductDetails data = {data}/>
+        {
+          data&& <SuggestedProducts data={data}/>
+        }
         <Footer/>
     </div>
   )

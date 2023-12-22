@@ -11,6 +11,7 @@ import BestSellingPage from './pages/BestSellingPage';
 import EventsPage from './pages/EventsPage';
 import FAQPage from './pages/FAQPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
+import ProfilePage from './pages/ProfilePage';
 export default function App() {
 
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route path='/best-selling' element = {<BestSellingPage/>}></Route>
         <Route path='/events' element = {<EventsPage/>}></Route>
         <Route path='/faq' element = {<FAQPage/>}></Route>
+        <Route path='/profile' element = {<ProfilePage/>}></Route>
       </Routes>
       <ToastContainer
         position="top-center"
