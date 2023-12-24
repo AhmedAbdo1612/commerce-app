@@ -18,4 +18,5 @@ router.post('/signin',[
     check('password').not().isEmpty()
 ],userController.signin)
 router.get('/getuser', authenicateUser, userController.getUser)
+router.get('/logout',authenicateUser,userController.logout)
 module.exports = router

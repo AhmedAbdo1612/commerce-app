@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/base/Button";
-import { AiOutlineArrowRight } from "react-icons/ai";
+import { MdOutlineTrackChanges } from "react-icons/md";
 import { DataGrid } from "@mui/x-data-grid";
 
-export default function AllOrders() {
+export default function TrackOrder() {
   const orders = [
     {
       _id: "rjoigjeriojoi34t3",
@@ -19,7 +19,6 @@ export default function AllOrders() {
   ];
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
-
     {
       field: "status",
       headerName: "Status",
@@ -41,7 +40,6 @@ export default function AllOrders() {
       minWidth: 130,
       flex: 0.8,
     },
-
     {
       field: " ",
       flex: 1,
@@ -52,9 +50,9 @@ export default function AllOrders() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={`/user/order/${params.id}`}>
+            <Link to={`/order/${params.id}`}>
               <Button>
-                <AiOutlineArrowRight size={20} />
+                <MdOutlineTrackChanges size={20} />
               </Button>
             </Link>
           </>
@@ -63,7 +61,8 @@ export default function AllOrders() {
     },
   ];
   const row = [];
-  orders && orders.forEach((item) => {
+  orders &&
+    orders.forEach((item) => {
       row.push({
         id: item._id,
         itemsQty: item.orderItems.length,
@@ -71,7 +70,6 @@ export default function AllOrders() {
         status: item.orderStatus,
       });
     });
-
   return (
     <div className="p-2">
       <DataGrid

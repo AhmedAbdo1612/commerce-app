@@ -6,3 +6,15 @@
 .header-transition{
     transition: 300ms;
 }
+
+.hover-update-user-form{
+    transition: background-color 500ms ease-out 50ms
+}
+.delete-icon{
+    transition:1s ease-in-out; 
+}
+.delete-icon:hover{
+    transform:rotate(360deg) scale(1.5);     
+    /* transform: rotate(360) 2s linear  ease-in-out; */
+   
+}

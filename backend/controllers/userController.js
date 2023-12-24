@@ -82,7 +82,6 @@ module.exports.activateAccount = async function (req, res, next) {
         sendToken(createdUser.toObject({ getters: true }), 201, res)
     }
     catch (err) {
-        console.log(err)
         return next(handleError("Creating user failed, please try again later", 500))
     }
 }
@@ -124,4 +123,17 @@ module.exports.getUser = async function (req, res, next) {
     }
 
 
+}
+module.exports.logout = async function(req,res,next){
+    try {
+        res.cookie("token",null,{
+            expires: new Date(Date.now()),
+            httpOnly:true
+        })
+        res.status(201).json({message:"Log out SUccessfull!"})
+        
+    } catch (error) {
+        console.log(error)
+        return next(handleError("Logging out faliled, please try again"),500)
+    }
 }

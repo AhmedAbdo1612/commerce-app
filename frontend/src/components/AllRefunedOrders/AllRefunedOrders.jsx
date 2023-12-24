@@ -4,7 +4,7 @@ import { Button } from "@mui/base/Button";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { DataGrid } from "@mui/x-data-grid";
 
-export default function AllOrders() {
+export default function AllRefunedOrders() {
   const orders = [
     {
       _id: "rjoigjeriojoi34t3",
@@ -63,7 +63,8 @@ export default function AllOrders() {
     },
   ];
   const row = [];
-  orders && orders.forEach((item) => {
+  orders &&
+    orders.forEach((item) => {
       row.push({
         id: item._id,
         itemsQty: item.orderItems.length,
@@ -71,16 +72,9 @@ export default function AllOrders() {
         status: item.orderStatus,
       });
     });
-
   return (
-    <div className="p-2">
-      <DataGrid
-        rows={row}
-        columns={columns}
-        pageSize={10}
-        disabledSelectionOnclick
-        autoHeight
-      />
-    </div>
-  );
+         <div className="p-2">
+            <DataGrid rows={row} columns={columns} pageSize = {10} autoHeight disableColumnSelector/>
+         </div>
+  )
 }
