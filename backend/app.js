@@ -10,7 +10,7 @@ const path = require('path')
 // const fileUpload = require('express-fileupload')
 const app =express()
 app.use(cors({
-    origin:"https://localhost:3000",
+    origin:"http://localhost:3000",
     credentials:true
 }))
 dotenv.config()
