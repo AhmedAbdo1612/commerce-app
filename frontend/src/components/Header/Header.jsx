@@ -65,7 +65,7 @@ export default function Header({ activeHeading }) {
               className="h-[40px] w-full px-2 border-blue-800 border-[2px] rounded-md"
             />
             <AiOutlineSearch size={30} className="absolute top-2 right-2" />
-            {searchData && searchData.length > 0 ? (
+            {searchData && searchData.length > 0 && searchTerm.length>0? (
               <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
                 {searchData.map((item, index) => {
                   const d = item.name;
