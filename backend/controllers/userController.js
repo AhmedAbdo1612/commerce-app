@@ -37,7 +37,7 @@ module.exports.signup = async function (req, res, next) {
             avatar: { url: fileUrl }
         }
         const activationToken = await createActivationToken(user)
-        const activationUrl = `http://localhost:3000/activation/${activationToken}`
+        const activationUrl = `https://e-commerce-rnkl.onrender.com/activation/${activationToken}`
         await sendMail({
             email: user.email,
             subject: "Activate your account",
