@@ -19,9 +19,7 @@ export default function Signup() {
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
   async function handleSubmit(event) {
-    setLoading(true);
-    setTimeout(()=>{}, 5000)
-  
+    setLoading(true);  
     event.preventDefault();
     try {
       const config = {
@@ -36,9 +34,11 @@ export default function Signup() {
         config
       );
       const data = res.data;
+      setLoading(false)
       toast.success(data.message);
       setFormData({ email: "", password: "", name: "" });
     } catch (error) {
+      setLoading(false)
       toast.error(error.response.data.message);
       console.log(error);
     }
