@@ -15,7 +15,7 @@ export default function Hero() {
           className="text-[35px] leaidn-[1.2] 800px:text-[60px]
              text-gray-800 font-[700] capitalize"
         >
-          Best collection for <br /> home decoration{" "}
+          Best collection for <br /> home decoration
         </h1>
         <p className="pt-5 text-[18px] font-[400] text-black">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum,
