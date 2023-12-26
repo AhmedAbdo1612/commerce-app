@@ -264,6 +264,7 @@ export default function Header({ activeHeading }) {
               </div>
             ) : null}
               </div>
+              <Navabr active={activeHeading}/>
             </div>
           </div>
         )}

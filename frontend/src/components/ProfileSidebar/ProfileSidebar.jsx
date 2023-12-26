@@ -13,15 +13,14 @@ import {useDispatch} from 'react-redux'
 export default function ProfileSidebar({ active, setActive }) {
   const dispatch = useDispatch()
   const logoutHandller = ()=>{
-   
-    axios.get(`${server}/user/logout`,{withCredentials:true}).then((res)=>{
-      dispatch(signOutUserSuccess())
-      window.location.reload(true)
-      navigate('/signin')
-    }).catch((err)=>{
-      console.log(err)
-      toast.error(err.response.data.message)
-    })
+   try {
+    dispatch(signOutUserSuccess())
+    window.location.reload(true)
+    navigate('/signin')
+   } catch (err) {
+    console.log(err)
+    toast.error("Failed")
+   }
   }
   const navigate = useNavigate();
   return (

@@ -36,11 +36,9 @@ export default function Signup() {
         config
       );
       const data = res.data;
-      setTimeout(()=>{setLoading(false)},3000)
       toast.success(data.message);
       setFormData({ email: "", password: "", name: "" });
     } catch (error) {
-      setTimeout(()=>{setLoading(false)},2500)
       toast.error(error.response.data.message);
       console.log(error);
     }
