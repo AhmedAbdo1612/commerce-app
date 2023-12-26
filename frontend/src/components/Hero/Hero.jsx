@@ -10,7 +10,7 @@ export default function Hero() {
           "url(https://themes.rslahmed.dev/rafcart/assets/images/banner-2.jpg)",
       }}
     >
-      <div className="w-11/12 mx-auto w-[90%] 800px:w-[60%]">
+      <div className="mx-auto w-[90%] 800px:w-[60%]">
         <h1
           className="text-[35px] leaidn-[1.2] 800px:text-[60px]
              text-gray-800 font-[700] capitalize"

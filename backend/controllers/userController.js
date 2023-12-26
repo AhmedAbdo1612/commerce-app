@@ -105,7 +105,6 @@ module.exports.signin = async function (req, res, next) {
         }
         sendToken(user.toObject({ getters: true }), 201, res)
     } catch (error) {
-        console.log(error)
         return next(handleError("Loggin falied, please try again later", 500))
     }
 

@@ -20,6 +20,7 @@ import { RxCross1 } from "react-icons/rx";
 
 export default function Header({ activeHeading }) {
   let user = useSelector((state) => state.user.user.currentUser);
+  const { authenticated } = useSelector((state) => state.user.user);
   const [open, setOpne] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState([]);
@@ -29,7 +30,9 @@ export default function Header({ activeHeading }) {
   const [openWishlist, setOpenWishlist] = useState(false);
   function handleSearchChange(e) {
     setSearchTerm(e.target.value);
-    const filteredProducts = productData && productData.filter((product) => {
+    const filteredProducts =
+      productData &&
+      productData.filter((product) => {
         return product.name.toLowerCase().includes(searchTerm.toLowerCase());
       });
     setSearchData(filteredProducts);
@@ -65,7 +68,7 @@ export default function Header({ activeHeading }) {
               className="h-[40px] w-full px-2 border-blue-800 border-[2px] rounded-md"
             />
             <AiOutlineSearch size={30} className="absolute top-2 right-2" />
-            {searchData && searchData.length > 0 && searchTerm.length>0? (
+            {searchData && searchData.length > 0 && searchTerm.length > 0 ? (
               <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
                 {searchData.map((item, index) => {
                   const d = item.name;
@@ -233,38 +236,70 @@ export default function Header({ activeHeading }) {
                     </span>
                   </div>
                 </div>
-                <RxCross1 size={30} onClick={()=>setOpne(false)}/>
+                <RxCross1 size={30} onClick={() => setOpne(false)} />
               </div>
               <div className="my-8 w-[92%] m-auto h-[40px] relative ">
-                 <input
-              type="text"
-              placeholder="Search Product"
-              value={searchTerm}
-              onChange={handleSearchChange}
-              className="h-[40px] w-full px-2 border-blue-800 border-[2px] rounded-md"
-            />
-            {searchData && searchData.length > 0 && searchTerm.length>0 ? (
-              <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] pb-5 p-4">
-                {searchData.map((item, index) => {
-                  const d = item.name;
-                  const product_name = d.replace(/\s+/g, "-");
-                  return (
-                    <Link to={`/product/${product_name}`} key={index}>
-                      <div className="w-full flex items-start py-3">
-                        <img
-                          src={item.image_Url[0].url}
-                          alt=""
-                          className="w-[40px] h-[40px] mr-[10px]"
-                        />
-                        <h2>{item.name}</h2>
-                      </div>
-                    </Link>
-                  );
-                })}
+                <input
+                  type="text"
+                  placeholder="Search Product"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  className="h-[40px] w-full px-2 border-blue-800 border-[2px] rounded-md"
+                />
+                {searchData &&
+                searchData.length > 0 &&
+                searchTerm.length > 0 ? (
+                  <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] pb-5 p-4">
+                    {searchData.map((item, index) => {
+                      const d = item.name;
+                      const product_name = d.replace(/\s+/g, "-");
+                      return (
+                        <Link to={`/product/${product_name}`} key={index}>
+                          <div className="w-full flex items-start py-3">
+                            <img
+                              src={item.image_Url[0].url}
+                              alt=""
+                              className="w-[40px] h-[40px] mr-[10px]"
+                            />
+                            <h2>{item.name}</h2>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                ) : null}
               </div>
-            ) : null}
+              <Navabr active={activeHeading} />
+              <div className="ml-5">
+                <Link to={"/seller"}>
+                  <h1 className="text-white  flex max-w-[150px] items-center bg-green-600 rounded-[6px] font-semibold py-3 px-2">
+                    Become Seller <IoIosArrowForward className="ml-1" />
+                  </h1>
+                </Link>
               </div>
-              <Navabr active={activeHeading}/>
+              <br />
+              <br />
+              <br />
+              {!authenticated ? (
+                <div className="flex w-full justify-center gap-2">
+                  <Link to="/signin" className="text-[18px]">
+                    Login
+                  </Link>
+                  <Link to="/sign-up" className="text-[18px]">
+                    Signup
+                  </Link>
+                </div>
+              ) : (
+                <div className="flex w-full justify-center gap-2">
+                  <Link to={"/profile"}>
+                    <img
+                      src={backend_url + "/" + user.user.avatar.url}
+                      alt=""
+                      className=" rounded-full w-[60px] h-[60px] object-cover border-[3px] border-green-500"
+                    />
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         )}

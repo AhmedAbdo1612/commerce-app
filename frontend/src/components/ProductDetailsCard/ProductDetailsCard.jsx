@@ -8,19 +8,19 @@ export default function ProductDetailsCard({ setOpen, data }) {
   // const [select, setSelect] = useState(false);
   function handleSubmit() {}
   return (
-    <div className="bg-white">
+    <div className="bg-white ">
       {data ? (
         <div
-          className="fixed w-full h-screen top-0 left-0 bg-gray-500 bg-opacity-50 z-40
+          className="  fixed w-full h-screen top-0 left-0 bg-gray-500 bg-opacity-50 z-40
              flex items-center justify-center"
         >
           <div
-            className="w-[90%] 800px:w-[60%] h-[90vh] overflow-y-scroll 800px:h-[75vh]
+            className=" pt-[50px] 800px:pt-0 w-[90%] 800px:w-[60%] h-[90vh] overflow-y-scroll 800px:h-[75vh]
                 bg-white rounded-md shadow-sm relative p-4"
           >
             <RxCross1
               size={30}
-              className="absolute right-3 top-3 z-50"
+              className="absolute right-3 top-8 z-50  800px:top-3"
               onClick={() => setOpen(false)}
             />
             <div className="block w-full 800px:flex">

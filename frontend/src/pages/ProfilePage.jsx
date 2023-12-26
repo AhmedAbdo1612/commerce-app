@@ -12,7 +12,7 @@ export default function ProfilePage() {
     <div className=" bg-gray-200 min-h-[100vh]">
       <Header />
       <div className="w-11/12 mx-auto flex pt-10">
-        <div className="w-[50px] 800px:w-[300px] ">
+        <div className="w-[50px] 800px:w-[300px]  mt-10 800px:mt-0">
           <ProfileSidebar active={active} setActive={setActive} />
         </div>
         <ProfileContent active={active} />

@@ -38,7 +38,7 @@ app.use((error,req,res,next)=>{
 
 
 
-mongoose.connect(process.env.MONGO,).then(()=>{
+mongoose.connect(process.env.LOCALDB,).then(()=>{
     console.log("Database successful connection")
     app.listen(5000,()=>{
         console.log("Sever is running in 5000")

@@ -20,7 +20,7 @@ export default function ProfileContent({ active }) {
   };
 
   return (
-    <div className="w-full 800px:w-[80%] mx-auto ml-5">
+    <div className="w-full 800px:w-[80%] mx-auto ml-5 mt-10 800px:mt-0">
       {/* Profile Page */}
       {active === 1 && (
         <>

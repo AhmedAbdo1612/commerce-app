@@ -73,8 +73,8 @@ export default function AllOrders() {
     });
 
   return (
-    <div className="p-2">
-      <DataGrid
+    <div className="p-2 w-[390px] sm:w-full overflow-y-scroll">
+      <DataGrid className="w-full"
         rows={row}
         columns={columns}
         pageSize={10}
