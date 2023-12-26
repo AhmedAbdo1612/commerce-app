@@ -8,6 +8,7 @@ import SuggestedProducts from '../components/SuggestedProducts/SuggestedProducts
 
 export default function ProductDetailsPage() {
     const {name} = useParams()
+    document.title = name
     const [data,setData] = useState(null)
     const productName = name.replace(/-/g, " ") 
     useEffect(()=>{

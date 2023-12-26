@@ -4,6 +4,7 @@ import Header from "../components/Header/Header";
 import { productData } from "../static/data";
 import ProductCard from "../components/ProductCard/ProductCard";
 export default function BestSellingPage() {
+  document.title = "Best Sales"
   const [searchParams] = useSearchParams();
   const categoryData = searchParams.get("category");
   const [data, setData] = useState([]);

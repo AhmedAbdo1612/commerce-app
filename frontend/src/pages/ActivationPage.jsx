@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from 'axios'
 import {server} from '../server.js'
 export default function ActivationPage() {
+  document.title = "Activation"
   const { activation_token } = useParams();
   const [error, setError] = useState(false);
   useEffect(() => {

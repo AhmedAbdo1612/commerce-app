@@ -7,6 +7,7 @@ export default function ProfilePage() {
 
 
   const [active, setActive] = useState(1);
+  document.title = "Profile"
   return (
     <div className=" bg-gray-200 min-h-[100vh]">
       <Header />

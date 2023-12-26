@@ -30,7 +30,7 @@ export default function Login() {
     setLoading(true);
     dispatch(signInStart());
     try {
-      console.log(server)
+
       const res = await axios.post(`${server}/user/signin`, formData, {withCredentials: true,});
       console.log(res);
       dispatch(signInSuccess(res.data));

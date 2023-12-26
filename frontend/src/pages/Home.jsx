@@ -8,6 +8,7 @@ import Events from '../components/Events/Events.jsx'
 import Sponsered from '../components/Sponsered/Sponsered.jsx'
 import Footer from '../components/Footer/Footer.jsx'
 export default function Home() {
+  document.title = "Home"
   return (
     <div className='bg-gray-200'>
       {/* Home Page */}
